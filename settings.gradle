@@ -1,0 +1,3 @@
+include ':ttslibrary'
+include ':app'
+rootProject.name = "HelloTTS"
