@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.util.Pair;
+import android.widget.Toast;
 
 import com.baidu.tts.client.SpeechSynthesizeBag;
 import com.baidu.tts.client.SpeechSynthesizer;
@@ -75,9 +76,10 @@ public class MySyntherizer implements MainHandlerConstant {
         int result = mSpeechSynthesizer.initTts(config.getTtsMode());
         if (result != 0) {
             Log.e(">>>","【error】initTts 初始化失败 + errorCode：" + result);
+            listener.onError(""+result,null);
             return false;
         }
-
+        listener.onError("00",null);
         // 设置播放的音频流类型，具体参数和组合见AudioAttributes,https://source.android.google.cn/devices/audio/attributes
         // mSpeechSynthesizer.setAudioAttributes(AudioAttributes.USAGE_MEDIA,AudioAttributes.CONTENT_TYPE_MUSIC);
 

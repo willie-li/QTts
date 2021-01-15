@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class TTSManager {
     private static volatile TTSManager instance = null;
-    protected String offlineVoice = OfflineResource.VOICE_MALE;
+    protected String offlineVoice = OfflineResource.VOICE_FEMALE;
     private Context mContext;
     private NonBlockSyntherizer synthesizer;
     private TTSListener listener = null;

@@ -33,13 +33,13 @@ public class MainActivity extends AppCompatActivity implements TTSListener,TextT
         clickBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TTSManager2.getInstance().init(MainActivity.this);
+                TTSManager2.getInstance().init(MainActivity.this,MainActivity.this);
 ////                TTSManager.getInstance().init(MainActivity.this,"23331281","DZOD7fjkuI1dx0tOmW3WYwbz",
 ////                        "RNqNw5XMGQgNj6lLR7woRvL8gUVQKNvn","9ac3f213-79efb19c-0a52-0075-67dc3-00");
 ////                TTSManager2.getInstance().setListener(MainActivity.this);
-//                TTSManager2.getInstance().speak("Hello world");
+                TTSManager2.getInstance().speak("Hello world");
 //                TTSManager2.getInstance().getSynthesizer().release();
-                mTextToSpeech.speak("请100号到2号接种台接种", TextToSpeech.QUEUE_ADD, null);
+//                mTextToSpeech.speak("请100号到2号接种台接种", TextToSpeech.QUEUE_ADD, null);
             }
         });
         initPermission();

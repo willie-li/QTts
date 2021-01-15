@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class TTSManager2 {
     private static volatile TTSManager2 instance = null;
-    protected String offlineVoice = OfflineResource.VOICE_MALE;
+    protected String offlineVoice = OfflineResource.VOICE_FEMALE;
     private Context mContext;
     private NonBlockSyntherizer synthesizer;
     protected String appId;
@@ -38,8 +38,9 @@ public class TTSManager2 {
     }
     public TTSManager2(){}
 
-    public void init(Context context){
+    public void init(Context context,TTSListener listener){
         this.mContext = context;
+        this.listener = listener;
         appId = Auth.getInstance(mContext).getAppId();
         appKey = Auth.getInstance(mContext).getAppKey();
         secretKey = Auth.getInstance(mContext).getSecretKey();
@@ -94,7 +95,7 @@ public class TTSManager2 {
             @Override
             public void onError(String s, SpeechError speechError) {
                 if(listener == null) return;
-                listener.onError(s,speechError.toString());
+                listener.onError(s,speechError == null?"":speechError.toString());
             }
         });
 
@@ -150,7 +151,4 @@ public class TTSManager2 {
         return synthesizer;
     }
 
-    public void setSynthesizer(NonBlockSyntherizer synthesizer) {
-        this.synthesizer = synthesizer;
-    }
 }
